@@ -48,10 +48,10 @@ jobs:
       if: github.ref == 'refs/heads/master'
       run: |
         pip install PyInstaller
-        pyinstaller -F app.py
+        pyinstaller -F katana.py
     
     - uses: actions/upload-artifact@master
       if: github.ref == 'refs/heads/master'
       with:
         name: ${{ runner.os }}
-        path: dist/app*
+        path: dist/katana*
