@@ -1,6 +1,4 @@
-from plyer.utils import platform
 from plyer import notification
-
 
 class Notify:
     
