@@ -1,1 +1,4 @@
+mock==4.0.2
 plyer==1.4.3
+pylint==2.5.3
+pytest==6.0.1
