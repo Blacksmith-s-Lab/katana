@@ -7,9 +7,18 @@ from core.notify import Notify
 class Katana:
     def __init__(self):
 
-        arg_names = ['title', 'message', 'app_name', 'app_icon']
-        args = collections.namedtuple('data', arg_names)(
-            *(dict(zip(arg_names, sys.argv[1:])).get(arg, "") for arg in arg_names))
+        arg_names = ['title', 'message', 'app_name', 'app_icon']        
+
+        # x, y, z e w são os parametros informados 
+
+        # Cria um dicionario de chave/valor ex: {title=x, message=y, app_name=z, app_icon=w}
+        args = dict(zip(arg_names, sys.argv[1:]))
+
+        # Cria uma lista do dicionario anterior ex: data(title=x, message=y, app_name=z, app_icon=w)
+        arg_list = collections.namedtuple('data', arg_names) 
+
+        # Percorre cada parabetro e atribui um valor default caso esteja sem valor, ex: data(title='', message='', app_name='', app_icon='')
+        args =  arg_list(*(args.get(arg, "") for arg in arg_names))  
 
         self.title = args.title if args.title else "Katana"
         self.message = args.message if args.message else "Hello World from Katana"
