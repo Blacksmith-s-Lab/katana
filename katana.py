@@ -3,19 +3,26 @@ import collections
 
 from core.notify import Notify
 
+
+class Katana:
+    def __init__(self):
+
+        arg_names = ['title', 'message', 'app_name', 'app_icon']
+        args = collections.namedtuple('data', arg_names)(
+            *(dict(zip(arg_names, sys.argv[1:])).get(arg, "") for arg in arg_names))
+
+        self.title = args.title if args.title else "Katana"
+        self.message = args.message if args.message else "Hello World from Katana"
+        self.app_name = args.app_name if args.app_name else "Katana"
+        self.app_icon = args.app_name if args.app_name else "./assets/katana-logo.svg"
+
+    def notify(self):
+        Notify().doNotify(self.title, self.message, self.app_name, self.app_icon)    
+
+
 def main():
-    arg_names = ['title', 'message', 'app_name', 'app_icon']
-
-    args = collections.namedtuple('data', arg_names)(
-        *(dict(zip(arg_names, sys.argv[1:])).get(arg, "") for arg in arg_names))
-
-    TITLE = args.title if args.title else "Katana"
-    MESSAGE = args.message if args.message else "Hello World from Katana"
-    APP_NAME = args.app_name if args.app_name else "Katana"
-    APP_ICON = args.app_name if args.app_name else "./assets/katana-logo.svg"
-
-    Notify().doNotify(TITLE, MESSAGE, APP_NAME, APP_ICON)
-    
+    Katana().notify()
 
 if __name__ == "__main__":
-    main()
+    main()     
+    
