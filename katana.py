@@ -20,10 +20,10 @@ class Katana:
         # Percorre cada parabetro e atribui um valor default caso esteja sem valor, ex: data(title='', message='', app_name='', app_icon='')
         args =  arg_list(*(args.get(arg, "") for arg in arg_names))  
 
-        self.title = args.title if args.title else "Katana"
-        self.message = args.message if args.message else "Hello World from Katana"
-        self.app_name = args.app_name if args.app_name else "Katana"
-        self.app_icon = args.app_name if args.app_name else "./assets/katana-logo.svg"
+        self.title = args.title or "Katana"
+        self.message = args.message or "Hello World from Katana"
+        self.app_name = args.app_name or "Katana"
+        self.app_icon = args.app_name or "./assets/katana-logo.svg"
 
     def notify(self):
         Notify().doNotify(self.title, self.message, self.app_name, self.app_icon)    
