@@ -45,13 +45,11 @@ jobs:
         pytest
     
     - name: Build with pyinstaller
-      if: github.ref == 'refs/heads/develop'
       run: |
         pip install PyInstaller
         pyinstaller -F katana.py
     
     - uses: actions/upload-artifact@develop
-      if: github.ref == 'refs/heads/develop'
       with:
         name: ${{ runner.os }}
         path: dist/katana*
