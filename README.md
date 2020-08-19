@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./assets/katana-logo.svg" alt="katana" width="300"/>
+    <img src="./docs/katana-logo.svg" alt="katana" width="300"/>
 </p>
 
 **Katana** is an open-source project and cross platform notifier. It can be used anywhere. You just have to do something like this:
@@ -28,16 +28,16 @@ pip install -r requirements.txt
 . venv/bin/activate
 python katana.py
 ```
-![](./assets/linux-notification.jpg)
+![](./docs/linux-notification.jpg)
 
 
 **Windows**
 ```
 TODO
 ```
-![](./assets/windows-notification.jpg)
+![](./docs/windows-notification.jpg)
 
 
 <p align="center">
-    <img src="./assets/samurai-python.svg" alt="katana" width="300"/>
+    <img src="./docs/samurai-python.svg" alt="katana" width="300"/>
 </p>
