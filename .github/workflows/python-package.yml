@@ -49,7 +49,7 @@ jobs:
         pip install PyInstaller
         pyinstaller -F katana.py
     
-    - uses: actions/upload-artifact@develop
+    - uses: actions/upload-artifact@v2
       with:
         name: ${{ runner.os }}
         path: dist/katana*
