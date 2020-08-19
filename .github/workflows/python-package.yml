@@ -47,7 +47,7 @@ jobs:
     - name: Build with pyinstaller
       run: |
         pip install PyInstaller
-        pyinstaller -F katana.py
+        pyinstaller -F katana.py --hidden-import plyer.platforms.${{ runner.os }}.notification
     
     - uses: actions/upload-artifact@v2
       with:
