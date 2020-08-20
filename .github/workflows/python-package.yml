@@ -48,6 +48,8 @@ jobs:
       run: |
         pip install PyInstaller
         
+        echo "$RUNNER_OS"
+        
         if [ "$RUNNER_OS" == "Linux" ]; then
           pyinstaller -F katana.py --hidden-import plyer.platforms.linux.notificatio
         elif [ "$RUNNER_OS" == "Windows" ]; then
