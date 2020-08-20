@@ -50,13 +50,13 @@ jobs:
         
         echo runner.os
         
-        if ${{ runner.os }} == Linux ; then
+        if "${{ runner.os }}" == "Linux" ; then
           pyinstaller -F katana.py --hidden-import plyer.platforms.linux.notificatio
           
-        elif ${{ runner.os }} == Windows ; then
+        elif "${{ runner.os }}" == "Windows" ; then
           pyinstaller -F katana.py --hidden-import plyer.platforms.win.notificatio
           
-        elif ${{ runner.os }} == macOS ; then
+        elif "${{ runner.os }}" == "macOS" ; then
           pyinstaller -F katana.py --hidden-import plyer.platforms.macosx.notificatio
           
         else
