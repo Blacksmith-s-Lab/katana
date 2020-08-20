@@ -52,15 +52,13 @@ jobs:
         pip install PyInstaller
               
         if ([ "$RUNNER_OS" == "Linux" ]); then
-          pyinstaller -F katana.py --hidden-import plyer.platforms.linux.notificatio
+          pyinstaller -F katana.py --hidden-import plyer.platforms.linux.notification
           
         if ([ "$RUNNER_OS" == "Windows" }); then
-          pyinstaller -F katana.py --hidden-import plyer.platforms.win.notificatio
+          pyinstaller -F katana.py --hidden-import plyer.platforms.win.notification
           
         if ([ "$RUNNER_OS" == "macOS" }); then
-          pyinstaller -F katana.py --hidden-import plyer.platforms.macosx.notificatio
-
-        
+          pyinstaller -F katana.py --hidden-import plyer.platforms.macosx.notification
 
     - uses: actions/upload-artifact@v2
       with:
