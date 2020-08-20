@@ -48,14 +48,17 @@ jobs:
       run: |
         pip install PyInstaller
         
-        echo "$RUNNER_OS"
+        echo runner.os
         
-        if [ "$RUNNER_OS" == "Linux" ]; then
+        if runner.os == "Linux" ; then
           pyinstaller -F katana.py --hidden-import plyer.platforms.linux.notificatio
-        elif [ "$RUNNER_OS" == "Windows" ]; then
+          
+        elif runner.os == "Windows" ; then
           pyinstaller -F katana.py --hidden-import plyer.platforms.win.notificatio
-        elif [ "$RUNNER_OS" == "macOS" ]; then
+          
+        elif runner.os == "macOS" ; then
           pyinstaller -F katana.py --hidden-import plyer.platforms.macosx.notificatio
+          
         else
           echo "$RUNNER_OS not supported"
           exit 1
