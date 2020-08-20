@@ -53,12 +53,15 @@ jobs:
               
         if ([ "$RUNNER_OS" == "Linux" ]); then
           pyinstaller -F katana.py --hidden-import plyer.platforms.linux.notification
+        fi
           
         if ([ "$RUNNER_OS" == "Windows" }); then
           pyinstaller -F katana.py --hidden-import plyer.platforms.win.notification
+        fi
           
         if ([ "$RUNNER_OS" == "macOS" }); then
           pyinstaller -F katana.py --hidden-import plyer.platforms.macosx.notification
+        fi
 
     - uses: actions/upload-artifact@v2
       with:
