@@ -16,6 +16,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+        os-alias: [linux, win, macosx]
         python-version: [3.7]
 
     steps:       
@@ -50,25 +51,7 @@ jobs:
 
       run: |
         pip install PyInstaller
-        
-        echo Start build process ...
-              
-        if [ "$RUNNER_OS" == "Linux" ]; then
-          echo Building on Linux
-          pyinstaller -F katana.py --hidden-import plyer.platforms.linux.notification
-        
-        elif [ "$RUNNER_OS" == "macOS" }; then
-          echo Building on MacOS
-          pyinstaller -F katana.py --hidden-import plyer.platforms.macosx.notification
-        
-        else
-          echo Building on Windows
-          pyinstaller -F katana.py --hidden-import plyer.platforms.win.notification
-        fi
-        
-        echo Build process Finish ...
-          
-        
+        pyinstaller -F katana.py --hidden-import plyer.platforms.${{ matrix.os-alias }}.notification
 
     - uses: actions/upload-artifact@v2
       with:
