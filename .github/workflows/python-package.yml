@@ -45,22 +45,25 @@ jobs:
         pytest
     
     - name: Build with pyinstaller
+      env:
+        os_alias: none 
+
       run: |
         pip install PyInstaller
         
-        $OS_ALIAS = $RUNNER_OS
-        echo $OS_ALIAS
+        $os_alias = $RUNNER_OS
+        echo $os_alias
         
         if ([ "$RUNNER_OS" == "Linux" ]); then
-          $OS_ALIAS = linux
+          $os_alias = linux
           
         if ([ "$RUNNER_OS" == "Windows" }); then
-          $OS_ALIAS = win
+          $os_alias = win
           
         if ([ "$RUNNER_OS" == "macOS" }); then
-          $OS_ALIAS = macosx
+          $os_alias = macosx
 
-        pyinstaller -F katana.py --hidden-import plyer.platforms.$OS_ALIAS.notificatio
+        pyinstaller -F katana.py --hidden-import plyer.platforms.$os_alias.notificatio
 
     - uses: actions/upload-artifact@v2
       with:
