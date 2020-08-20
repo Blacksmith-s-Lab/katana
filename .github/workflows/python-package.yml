@@ -50,18 +50,25 @@ jobs:
 
       run: |
         pip install PyInstaller
+        
+        echo Start build process ...
               
-        if ([ "$RUNNER_OS" == "Linux" ]); then
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          echo Building on Linux
           pyinstaller -F katana.py --hidden-import plyer.platforms.linux.notification
-        fi
-          
-        if ([ "$RUNNER_OS" == "Windows" }); then
+        
+        elif [ "$RUNNER_OS" == "macOS" }; then
+          echo Building on MacOS
+          pyinstaller -F katana.py --hidden-import plyer.platforms.macosx.notification
+        
+        else
+          echo Building on Windows
           pyinstaller -F katana.py --hidden-import plyer.platforms.win.notification
         fi
+        
+        echo Build process Finish ...
           
-        if ([ "$RUNNER_OS" == "macOS" }); then
-          pyinstaller -F katana.py --hidden-import plyer.platforms.macosx.notification
-        fi
+        
 
     - uses: actions/upload-artifact@v2
       with:
