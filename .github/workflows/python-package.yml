@@ -16,9 +16,10 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+        os-alias: [linux, win, macosx]
         python-version: [3.7]
 
-    steps:
+    steps:       
     
     - uses: actions/checkout@v2
     
@@ -45,13 +46,14 @@ jobs:
         pytest
     
     - name: Build with pyinstaller
-      if: github.ref == 'refs/heads/master'
+      env:
+        os_alias: none 
+
       run: |
         pip install PyInstaller
-        pyinstaller -F katana.py
-    
-    - uses: actions/upload-artifact@master
-      if: github.ref == 'refs/heads/master'
+        pyinstaller -F katana.py --hidden-import plyer.platforms.${{ matrix.os-alias }}.notification
+
+    - uses: actions/upload-artifact@v2
       with:
         name: ${{ runner.os }}
         path: dist/katana*
